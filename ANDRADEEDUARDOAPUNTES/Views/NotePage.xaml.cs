@@ -1,4 +1,4 @@
-using ANDRADEEDUARDOAPUNTES.Models;  // Asegúrate de importar el modelo de Note
+using ANDRADEEDUARDOAPUNTES.Models;
 using Microsoft.Maui.Controls;
 using System;
 using System.IO;
@@ -16,10 +16,14 @@ namespace ANDRADEEDUARDOAPUNTES.Views
         {
             InitializeComponent();
 
-            string appDataPath = FileSystem.AppDataDirectory;
             string randomFileName = $"{Path.GetRandomFileName()}.notes.txt";
+            string filePath = Path.Combine(FileSystem.AppDataDirectory, randomFileName);
 
-            LoadNote(Path.Combine(appDataPath, randomFileName));  // Cargar la nota al inicializar
+            BindingContext = new Note
+            {
+                Filename = filePath,
+                Date = DateTime.Now
+            };
         }
 
         // Método para cargar la nota desde el archivo
@@ -35,13 +39,12 @@ namespace ANDRADEEDUARDOAPUNTES.Views
         // Método que se ejecuta al hacer clic en el botón "Save"
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            if (BindingContext is Models.Note note)
+            if (BindingContext is Note note)
             {
-                // Guardar el contenido de la nota en el archivo
-                File.WriteAllText(note.Filename, TextEditor.Text);
+                note.Text = TextEditor.Text;
+                File.WriteAllText(note.Filename, note.Text);
             }
 
-            // Navegar hacia atrás
             await Shell.Current.GoToAsync("..");
         }
 
