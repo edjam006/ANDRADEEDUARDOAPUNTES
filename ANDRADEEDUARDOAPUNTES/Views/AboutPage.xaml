@@ -4,10 +4,11 @@
              xmlns:models="clr-namespace:ANDRADEEDUARDOAPUNTES.Models"
              x:Class="ANDRADEEDUARDOAPUNTES.Views.AboutPage"
              x:DataType="models:About"
-             Title="AboutPage">
+             Title="Eduardo Andrade">
     <VerticalStackLayout Spacing="10" Margin="10">
         <HorizontalStackLayout Spacing="10">
-            <Image Source="dotnet_bot.png"
+            <Image Source="icono.png"
+                   HorizontalOptions="Center"
                    SemanticProperties.Description="The dot net bot waving hello!"
                    HeightRequest="64" />
             <Label FontSize="22" FontAttributes="Bold" Text="{Binding Title}" VerticalOptions="End" />
@@ -15,6 +16,8 @@
         </HorizontalStackLayout>
 
         <Label Text="{Binding Message}" />
+        <Label Text="Eduardo Andrade" />
+        <Label Text="Soy estudiante de la carrera de Ingenieria de Software en la Udla, ademas estudio Derecho en linea en la unemi, me gustan los deportes y comer" />
         <Button Text="Learn more..." Clicked="LearnMore_Clicked" />
     </VerticalStackLayout>
 </ContentPage>

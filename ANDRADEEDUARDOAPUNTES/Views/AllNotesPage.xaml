@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:ANDRADEEDUARDOAPUNTES.Models"
              x:Class="ANDRADEEDUARDOAPUNTES.Views.AllNotesPage"
-             Title="AllNotesPage">
+             Title="Eduardo Andrade">
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}" />

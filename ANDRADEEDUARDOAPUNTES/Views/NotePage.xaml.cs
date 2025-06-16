@@ -67,7 +67,20 @@ namespace ANDRADEEDUARDOAPUNTES.Views
         // Propiedad para manejar la navegación y carga de la nota usando ItemId
         public string ItemId
         {
-            set { LoadNote(value); }
+            set
+            {
+                if (File.Exists(value))
+                {
+                    var noteText = File.ReadAllText(value);
+                    BindingContext = new Note
+                    {
+                        Filename = value,
+                        Text = noteText,
+                        Date = File.GetCreationTime(value)
+                    };
+                }
+            }
         }
+
     }
 }
